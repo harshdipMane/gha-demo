@@ -18,7 +18,7 @@ jobs:
      needs: build
      steps: 
        - name: test step !
-         run: echo "A test step"
+         run: echo "My Password to test the application is ${{ secrets.MY_PASSWORD }}"
 
   deploy:
     runs-on: ubuntu-latest
