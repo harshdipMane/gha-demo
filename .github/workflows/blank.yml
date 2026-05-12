@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Build step
-        run: echo "A demo build"
+        run: echo "Hi" {{ MY_NAME }}
   
   test:
      runs-on: ubuntu-latest
