@@ -3,9 +3,8 @@ on:
  push:
    branches:
      - main
-     - feature/**
  pull_request:
-   branches: 
+   branches:
      - feature/github-action-on-running
 jobs:
   build:
