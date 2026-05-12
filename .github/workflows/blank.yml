@@ -3,6 +3,10 @@ on:
  push:
    branches:
      - main
+     - feature/**
+ pull_request:
+   branches: 
+     - feature/github-action-on-running
 jobs:
   build:
     runs-on: ubuntu-latest
