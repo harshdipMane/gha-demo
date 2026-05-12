@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Build step
-        run: echo "Hi" {{ MY_NAME }}
+        run: echo "Hi , ${{ vars.MY_NAME }}"
   
   test:
      runs-on: ubuntu-latest
