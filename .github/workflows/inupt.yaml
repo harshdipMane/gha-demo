@@ -20,7 +20,7 @@ jobs:
    runs-on: ubuntu-latest
    steps:
      - name: Deploy APP
-       run: "Deploying the ${{ inputs.artifactory_tag }} application ti ${{ inputs.enviornment }}" 
+       run: echo "Deploying the ${{ inputs.artifactory_tag }} application ti ${{ inputs.enviornment }}" 
       
 
      
