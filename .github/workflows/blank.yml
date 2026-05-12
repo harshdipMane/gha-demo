@@ -1,4 +1,6 @@
 name: Hellp world!
+env:
+  APP_ENV: "dev"
 on: 
  push:
    branches:
@@ -13,10 +15,13 @@ jobs:
      - name: checkout the code
        uses: actions/checkout@v4
      - name: Print index.html
-       run: cat index.html
+       run: |
+        cat index.html
+        echo "MY env is $APP_ENV"
 
   build:
     runs-on: ubuntu-latest
+    needs: action-demo
     steps:
       - name: Build step
         run: echo "Hi , ${{ vars.MY_NAME }}"
