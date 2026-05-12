@@ -1,0 +1,28 @@
+name: Input Demo
+on: 
+ workflow_dispatch:
+   inputs:
+     enviornment: 
+      description: Choose the enviornment to deploy
+      required: true
+      default: dev
+      type: choice
+      options:
+        - dev
+        - test
+        - prod
+     artifactory_tag:
+      description: Choose the git tag to deploy
+      required: true
+
+jobs:
+  inputs-demo:
+   runs-on: ubuntu-latest
+   steps:
+     - name: Deploy APP
+       run: "Deploying the ${{ inputs.artifactory_tag }} application ti ${{ inputs.enviornment }}" 
+      
+
+     
+        
+
