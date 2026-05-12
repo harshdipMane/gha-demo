@@ -1,0 +1,46 @@
+name: branch wise trigger
+on: 
+ push:
+  branches: 
+  - devlopment
+  - main
+  - feature/**
+jobs:
+  quality_check:
+    if: startsWith(github.ref_name,'feature') && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+     - name: perform code quality
+       run: echo "performing quality checks on the code"
+  deploy_code:
+    if: github.ref_name == 'development' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy the code
+        run: echo "deploy the code"
+  prod_deploy:
+    if: github.ref_name == 'main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy the code in production
+        run: echo "Deploy the code in production"
+  success_notification:
+    needs: ['quality_check','prod_deploy','deploy_code']
+    if: always() && !failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code pushed successfully
+        run: echo "Successfully deploy the code"
+  failure_notifiactions:
+    needs: ['quality_check','prod_deploy','deploy_code']
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: failire in code pushing
+        run: echo "Failed to deploy the code"
+     
+      
+
+
+
+      
